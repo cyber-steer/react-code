@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row, Button, Col, Badge } from 'react-bootstrap';
 
 const questions = {
-  A: [
+  UNIX시스템: [
     {
       question: "다음중 GNU 프로젝트와의 관련성이 가장 적은 것은?",
       options: ["리처드 스톨먼", "GPL", "Apache 서버", "자유 소프트웨어 운동"],
@@ -17,8 +17,20 @@ const questions = {
       answer: 0
     },
     {
-      question: "AAA는 무엇일까?",
-      options: ["가", "나", "다", "라"],
+      question: "셸의 명령 행에서 사용하는 특수 문자에 관한 설명이다. 잘못된 것은?",
+      options: ["| : 특수 문자 앞에 붙어 특수 문자의 기능을 제거함",
+                ">> : 표준 출력을 파일의 끝에 덧붙일 때 사용함",
+                "# : 이후의 문자들이 주석으로 처리됨",
+                "! : 명령 히스토리 기능을 이용할 때 사용함"],
+      answer: 0
+    },
+    {
+      question: "다음 명령의 실행 결과로 생각되는 것은? 맨 앞의 $는 셸 프롬프트이며 passwd는 비밀번호를 바꿀 때 사용하는 명령이다.",
+      content: 'content',
+      options: ["",
+                "",
+                "",
+                ""],
       answer: 0
     },
   ],
@@ -48,7 +60,6 @@ const questions = {
   ]
 };
 
-// 배열을 무작위로 섞는 함수
 const shuffleArray = (array) => {
   let newArray = array.slice();
   for (let i = newArray.length - 1; i > 0; i--) {
@@ -63,8 +74,8 @@ function About() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [shuffledOptions, setShuffledOptions] = useState([]);
-  const [correctOptionIndex, setCorrectOptionIndex] = useState(null); // 정답의 인덱스를 저장하는 상태
-  const [checkedAnswer, setCheckedAnswer] = useState(false); // 정답 확인 여부 상태
+  const [correctOptionIndex, setCorrectOptionIndex] = useState(null); 
+  const [checkedAnswer, setCheckedAnswer] = useState(false);
 
   const handleSubjectSelect = (subject) => {
     const questionIndex = Math.floor(Math.random() * questions[subject].length);
@@ -72,18 +83,18 @@ function About() {
     setCurrentQuestionIndex(questionIndex);
     const shuffledOptions = shuffleArray(questions[subject][questionIndex].options);
     setShuffledOptions(shuffledOptions);
-    setCorrectOptionIndex(shuffledOptions.indexOf(questions[subject][questionIndex].options[questions[subject][questionIndex].answer])); // 정답의 새로운 인덱스를 설정
+    setCorrectOptionIndex(shuffledOptions.indexOf(questions[subject][questionIndex].options[questions[subject][questionIndex].answer]));
     setSelectedOption(null);
-    setCheckedAnswer(false); // 정답 확인 상태 초기화
+    setCheckedAnswer(false);
   };
 
   const handleOptionSelect = (index) => {
     setSelectedOption(index);
-    setCheckedAnswer(false); // 선택 시 정답 확인 상태 초기화
+    setCheckedAnswer(false); 
   };
 
   const handleCheckAnswer = () => {
-    setCheckedAnswer(true); // 정답 확인 상태로 변경
+    setCheckedAnswer(true)
   };
 
   const handleNextQuestion = () => {
@@ -96,9 +107,9 @@ function About() {
     setCurrentQuestionIndex(nextIndex);
     const shuffledOptions = shuffleArray(questions[selectedSubject][nextIndex].options);
     setShuffledOptions(shuffledOptions);
-    setCorrectOptionIndex(shuffledOptions.indexOf(questions[selectedSubject][nextIndex].options[questions[selectedSubject][nextIndex].answer])); // 정답의 새로운 인덱스를 설정
+    setCorrectOptionIndex(shuffledOptions.indexOf(questions[selectedSubject][nextIndex].options[questions[selectedSubject][nextIndex].answer])); 
     setSelectedOption(null);
-    setCheckedAnswer(false); // 정답 확인 상태 초기화
+    setCheckedAnswer(false);
   };
   
 
@@ -106,16 +117,16 @@ function About() {
     padding: '10px',
     fontSize: '14px',
     marginBottom: '10px',
-    color: 'black', // 글자 색을 검정색으로 설정
-    textAlign: 'left', // 텍스트를 좌측 정렬
-    width: 'auto' // 너비를 자동으로 조정
+    color: 'black', 
+    textAlign: 'left',
+    width: 'auto'
   };
 
   const badgeStyle = {
     padding: '10px',
     fontSize: '14px',
-    cursor: 'pointer', // 커서가 포인터로 변경되도록 설정
-    marginRight: '10px', // 뱃지 간격 추가
+    cursor: 'pointer',
+    marginRight: '10px',
     marginBottom: '10px'
   };
 
@@ -129,7 +140,7 @@ function About() {
 
   const formGroupStyle = {
     display: 'flex',
-    justifyContent: 'space-between', // 버튼을 좌우로 배치
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: '1rem'
   };
@@ -141,7 +152,6 @@ function About() {
     }
     return {
       width: '100%',
-      marginBottom: '10px',
       backgroundColor: backgroundColor,
       color: 'black',
       textAlign: 'left'
@@ -153,7 +163,7 @@ function About() {
   };
 
   const containerStyle = {
-    marginTop: '20px' // 상단에 마진을 추가
+    marginTop: '20px'
   };
 
   const placeholderStyle = {
@@ -181,9 +191,14 @@ function About() {
       {selectedSubject !== null && (
         <>
           <div style={questionStyle}>
-            <h3>{selectedSubject}과목 문제</h3>
             <p>{questions[selectedSubject][currentQuestionIndex].question}</p>
+            {questions[selectedSubject][currentQuestionIndex].content && ( <pre>{questions[selectedSubject][currentQuestionIndex].content}</pre> )}
           </div>
+          {questions[selectedSubject][currentQuestionIndex].content && (
+            <div style={questionStyle}>
+                <pre>{questions[selectedSubject][currentQuestionIndex].content}</pre>
+            </div>
+          )}
           <div>
             {shuffledOptions.map((option, index) => (
               <Button
@@ -206,11 +221,11 @@ function About() {
       <Row className="mt-4">
         <Col xs="auto">
           <Badge 
-            bg={selectedSubject === 'A' ? "dark" : "secondary"} 
-            onClick={() => handleSubjectSelect('A')} 
+            bg={selectedSubject === 'UNIX시스템' ? "dark" : "secondary"} 
+            onClick={() => handleSubjectSelect('UNIX시스템')} 
             style={badgeStyle}
           >
-            A과목
+            UNIX시스템
           </Badge>
         </Col>
         <Col xs="auto">
@@ -229,24 +244,6 @@ function About() {
             style={badgeStyle}
           >
             C과목
-          </Badge>
-        </Col>
-        <Col xs="auto">
-          <Badge 
-            bg={selectedSubject === 'D' ? "dark" : "secondary"} 
-            onClick={() => handleSubjectSelect('D')} 
-            style={badgeStyle}
-          >
-            D과목
-          </Badge>
-        </Col>
-        <Col xs="auto">
-          <Badge 
-            bg={selectedSubject === 'E' ? "dark" : "secondary"} 
-            onClick={() => handleSubjectSelect('E')} 
-            style={badgeStyle}
-          >
-            E과목
           </Badge>
         </Col>
       </Row>
