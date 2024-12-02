@@ -1,0 +1,113 @@
+
+.card-body-content {
+    margin-bottom: 20px;
+  }
+  
+  
+  .card-title-fixed {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 최대 줄 수 설정 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 50px; /* 줄 수에 따라 높이 조정: 약 1.5em(각 줄 높이) * 최대 줄 수 */
+  }
+  
+  
+  
+  .card-text-fixed {
+    height: 70px; /* 원하는 높이로 조정하세요 */
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 최대 줄 수 설정 */
+    -webkit-box-orient: vertical;
+  }
+  
+  .card-fixed-size {
+    height: 400px; /* 원하는 높이로 조정하세요 */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-body-fixed {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .card-body-fixed {
+    flex: 1;
+    overflow: hidden;
+    padding-bottom: 0; /* Body의 하단 패딩을 제거 */
+  }
+  
+
+  .card-body-fixed {
+    flex: 1;
+    overflow: hidden;
+    position: relative; /* 상대 위치를 설정하여 절대 위치의 닉네임 요소를 올바르게 배치 */
+  }
+  
+  .nickname {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px; /* 필요에 따라 조정 */
+    color: #6c757d; /* 텍스트 색상 */
+  }
+  
+  .card-footer-custom {
+    width: 100%; /* 너비를 100%로 설정 */
+    padding-top: 0.5rem;
+    border-top: 1px solid #dee2e6;
+  }
+  .card-footer-custom {
+    padding-top: 0.5rem; /* Footer의 상단 패딩을 설정하여 경계선을 부드럽게 만듦 */
+    border-top: none; /* 상단 경계선 제거 */
+    border-top: 1px solid #dee2e6; /* 사용자 정의 경계선 설정 */
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* xs */
+@media (max-width: 576px) {
+  .card-fixed-size {
+      height: 250px;
+  }
+}
+
+/* sm */
+@media (min-width: 576px) and (max-width: 768px) {
+  .card-fixed-size {
+      height: 250px;
+  }
+}
+
+/* md */
+@media (min-width: 768px) and (max-width: 992px) {
+  .card-fixed-size {
+      height: 400px;
+  }
+}
+
+/* lg */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .card-fixed-size {
+      height: 400px;
+  }
+}
+
+/* xxl */
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .card-fixed-size {
+      height: 400px;
+  }
+}
+
+/* xxl */
+@media (min-width: 1400px) {
+  .card-fixed-size {
+      height: 450px;
+  }
+}

@@ -1,0 +1,55 @@
+.carousel-image{
+    width: 100%;
+}
+
+/* xs */
+@media (max-width: 576px) {
+    .carousel-image {
+        height: 100px;
+    }
+}
+
+/* sm */
+@media (min-width: 576px) and (max-width: 768px) {
+    .carousel-image {
+        height: 100px;
+    }
+}
+
+/* md */
+@media (min-width: 768px) and (max-width: 992px) {
+    .carousel-image {
+        height: 200px;
+    }
+}
+
+/* lg */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .carousel-image {
+        height: 200px;
+    }
+}
+
+/* xxl */
+@media (min-width: 1200px) and (max-width: 1400px) {
+    .carousel-image {
+        height: 300px;
+    }
+}
+
+/* xxl */
+@media (min-width: 1400px) {
+    .carousel-image {
+        height: 300px;
+    }
+}
+/* 화살표 색상 변경 */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black; /* 원하는 색상으로 변경 */
+}
+
+.carousel .carousel-indicators button{
+    background-color: black !important; /* 기본 표시기 색상 */
+  }
+  
